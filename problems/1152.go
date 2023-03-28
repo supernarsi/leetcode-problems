@@ -1,8 +1,18 @@
 package problems
 
 import (
+	"fmt"
 	"sort"
 )
+
+func main() {
+	usernames := []string{"joe", "joe", "joe", "james", "james", "james", "james", "mary", "mary", "mary"}
+	timestamps := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	websites := []string{"home", "about", "career", "home", "cart", "maps", "home", "home", "about", "career"}
+	ans := web(usernames, timestamps, websites)
+
+	fmt.Println(ans)
+}
 
 func web(usernames []string, times []int, websites []string) []string {
 	ans := []string{}

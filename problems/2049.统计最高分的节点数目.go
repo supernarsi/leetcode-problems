@@ -1,12 +1,5 @@
 package problems
 
-//func main() {
-//	parents := []int{-1, 2, 0, 2, 0}
-//	ans := countHighestScoreNodes(parents)
-//
-//	fmt.Println(ans)
-//}
-
 /*
  * @lc app=leetcode.cn id=2049 lang=golang
  *

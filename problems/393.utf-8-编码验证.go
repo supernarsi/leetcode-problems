@@ -5,12 +5,6 @@ import (
 	"strconv"
 )
 
-//func main() {
-//	params := []int{250, 145, 145, 145, 145}
-//	ans := validUtf8(params)
-//	fmt.Println(ans)
-//}
-
 /*
  * @lc app=leetcode.cn id=393 lang=golang
  *

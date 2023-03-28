@@ -4,7 +4,7 @@ type MaxQueue struct {
 	que, maxQue []int
 }
 
-func Constructor() MaxQueue {
+func ConstructorOffer59() MaxQueue {
 	return MaxQueue{que: []int{}, maxQue: []int{}}
 }
 
