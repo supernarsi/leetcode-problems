@@ -23,6 +23,7 @@ func TestMostFrequentEven(t *testing.T) {
 		{"test10", args{[]int{1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}}, 4},
 		{"test11", args{[]int{1, 2, 2, 3, 3, 3}}, 2},
 		{"test12", args{[]int{1, 2, 2, 3, 3, 3, 4}}, 2},
+		{"test13", args{[]int{29, 47, 21, 41, 13, 37, 25, 7}}, -1},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

@@ -15,6 +15,7 @@ func mostFrequentEven(nums []int) (ans int) {
 		}
 	}
 	max := 0
+	ans = -1
 	for k, v := range m {
 		if v > max {
 			max = v
