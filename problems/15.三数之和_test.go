@@ -1,6 +1,7 @@
 package problems
 
 import (
+	"sort"
 	"strconv"
 	"testing"
 )
@@ -18,6 +19,7 @@ func TestThreeSum(t *testing.T) {
 	}
 
 	toString := func(input []int) string {
+		sort.Ints(input)
 		ans := ""
 		for _, v := range input {
 			ans += strconv.Itoa(v)

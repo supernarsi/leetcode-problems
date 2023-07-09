@@ -1,7 +1,6 @@
 package problems
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -29,21 +28,18 @@ func threeSum(nums []int) (ans [][]int) {
 		return res
 	}
 
-	exist := map[string]bool{}
+	exist := map[int]bool{}
+	sort.Ints(nums)
 	for i, n := range nums {
+		if exist[n] {
+			continue
+		}
 		res := calLeft(nums[i+1:], -n)
 		if len(res) > 0 {
 			for key, val := range res {
 				tmp := []int{n, key, val}
-				sort.Ints(tmp)
-				tmpKey := ""
-				for _, tInt := range tmp {
-					tmpKey += ("," + fmt.Sprintf("%d", tInt))
-				}
-				if !exist[tmpKey] {
-					ans = append(ans, tmp)
-					exist[tmpKey] = true
-				}
+				ans = append(ans, tmp)
+				exist[n] = true
 			}
 		}
 	}
