@@ -14,7 +14,22 @@ import (
 // @lc code=start
 func threeSumClosest(nums []int, target int) int {
 	sort.Ints(nums)
-	// -4, -1, 1, 2
+
+	abs := func(a int) int {
+		if a < 0 {
+			a = -a
+		}
+		return a
+	}
+
+	update := func(res int, minDiff int, sum int, target int) (resV int, newMinDiff int) {
+		innerNowDiff := abs(sum - target)
+		if innerNowDiff < minDiff {
+			minDiff = innerNowDiff
+			res = sum
+		}
+		return res, minDiff
+	}
 
 	calLeft := func(sortedArr []int, t int) int {
 		l, r := 0, len(sortedArr)-1
@@ -25,15 +40,8 @@ func threeSumClosest(nums []int, target int) int {
 			if innerNowSum == t {
 				return t
 			}
-			innerNowDiff := innerNowSum - t
-			if innerNowDiff < 0 {
-				innerNowDiff = -innerNowDiff
-			}
-			if innerNowDiff < innerMinDiff {
-				innerMinDiff = innerNowDiff
-				res = innerNowSum
-			}
 
+			res, innerMinDiff = update(res, innerMinDiff, innerNowSum, t)
 			if innerNowSum < t {
 				l++
 			} else if innerNowSum > t {
@@ -51,14 +59,8 @@ func threeSumClosest(nums []int, target int) int {
 		if leftSum+v == target {
 			return target
 		}
-		nowDiff := leftSum + v - target
-		if nowDiff < 0 {
-			nowDiff = -nowDiff
-		}
-		if nowDiff < minDiff {
-			minDiff = nowDiff
-			ans = leftSum + v
-		}
+		tmpSun := leftSum + v
+		ans, minDiff = update(ans, minDiff, tmpSun, target)
 	}
 
 	return ans
