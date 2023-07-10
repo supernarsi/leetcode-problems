@@ -1,6 +1,9 @@
 package problems
 
-import "math"
+import (
+	"math"
+	"sort"
+)
 
 /*
  * @lc app=leetcode.cn id=16 lang=golang
@@ -10,25 +13,54 @@ import "math"
 
 // @lc code=start
 func threeSumClosest(nums []int, target int) int {
-	t := len(nums)
-	ans := 0
-	initDiff := math.MaxInt64
+	sort.Ints(nums)
+	// -4, -1, 1, 2
 
-	for i := 0; i < t; i++ {
-		for j := i + 1; j < t; j++ {
-			for k := j + 1; k < t; k++ {
-				sum := nums[i] + nums[j] + nums[k]
-				diff := sum - target
-				if diff < 0 {
-					diff = -diff
-				}
-				if diff < initDiff {
-					initDiff = diff
-					ans = sum
-				}
+	calLeft := func(sortedArr []int, t int) int {
+		l, r := 0, len(sortedArr)-1
+		innerNowSum, res := 0, 0
+		innerMinDiff := math.MaxInt64
+		for l < r {
+			innerNowSum = sortedArr[l] + sortedArr[r]
+			if innerNowSum == t {
+				return t
+			}
+			innerNowDiff := innerNowSum - t
+			if innerNowDiff < 0 {
+				innerNowDiff = -innerNowDiff
+			}
+			if innerNowDiff < innerMinDiff {
+				innerMinDiff = innerNowDiff
+				res = innerNowSum
+			}
+
+			if innerNowSum < t {
+				l++
+			} else if innerNowSum > t {
+				r--
 			}
 		}
+		return res
 	}
+
+	ans := 0
+	minDiff := math.MaxInt64
+	for i := 0; i <= len(nums)-3; i++ {
+		v := nums[i]
+		leftSum := calLeft(nums[i+1:], target-v)
+		if leftSum+v == target {
+			return target
+		}
+		nowDiff := leftSum + v - target
+		if nowDiff < 0 {
+			nowDiff = -nowDiff
+		}
+		if nowDiff < minDiff {
+			minDiff = nowDiff
+			ans = leftSum + v
+		}
+	}
+
 	return ans
 }
 

@@ -11,6 +11,7 @@ func TestThreeSumClosest(t *testing.T) {
 	}{
 		{"t1", []int{-1, 2, 1, -4}, 1, 2},
 		{"t2", []int{0, 0, 0}, 1, 0},
+		{"t3", []int{0, 1, 2}, 3, 3},
 	}
 
 	for _, v := range tests {
