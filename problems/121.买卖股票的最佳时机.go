@@ -9,7 +9,7 @@ import "math"
  */
 
 // @lc code=start
-func maxProfit(prices []int) int {
+func maxProfit1(prices []int) int {
 	min := func(i, j int) int {
 		if i < j {
 			return i

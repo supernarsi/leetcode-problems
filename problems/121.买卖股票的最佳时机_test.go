@@ -2,7 +2,7 @@ package problems
 
 import "testing"
 
-func TestMaxProfit(t *testing.T) {
+func TestMaxProfit1(t *testing.T) {
 	tests := []struct {
 		name  string
 		input []int
@@ -17,7 +17,7 @@ func TestMaxProfit(t *testing.T) {
 
 	for _, v := range tests {
 		t.Run(v.name, func(t *testing.T) {
-			if got := maxProfit(v.input); got != v.want {
+			if got := maxProfit1(v.input); got != v.want {
 				t.Errorf("%v, want %v, got %v", v.name, v.input, got)
 			}
 		})
